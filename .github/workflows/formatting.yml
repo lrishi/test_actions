@@ -1,15 +1,19 @@
 name: Code Formatting
 on: [push, pull_request, workflow_dispatch]
-
 jobs:
   code_formatting:
     name: Code Formatting
     runs-on: ubuntu-latest
     steps:
-    - name: Run clang-format
-      uses: actions/checkout@v2
-    - run: ls -lha ${{ github.workspace }}
-    - run: /usr/bin/env python2.7 --version
-    - run: clang-format --version
-
-
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v0'
+    - name: 'Use gcloud CLI'
+      run: 'gcloud info'
+    - name: Copy clang-format
+      run: gsutil cp gs://endpoint-dev-artifacts/endpoint-dev-large-files/Tools/ClangFormat/clang-format-linux ./clang-format-linux
+    - name: LS
+      run: ls -lha .
