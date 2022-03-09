@@ -10,5 +10,6 @@ jobs:
       uses: actions/checkout@v2
     - run: ls -lha ${{ github.workspace }}
     - run: /usr/bin/env python2.7 --version
+    - run: clang-format --version
 
 
