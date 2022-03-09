@@ -1,0 +1,14 @@
+name: Code Formatting
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  code_formatting:
+    name: Code Formatting
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run clang-format
+      uses: actions/checkout@v2
+    - run: ls -lha $ {{ github.workspace }}
+    - run: /usr/bin/env python2.7 --version
+
+
