@@ -8,7 +8,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: TOUCH
-      run: touch some_filename
+      run: date > date.file
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@v0.8
       with:
