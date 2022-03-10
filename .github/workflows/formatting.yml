@@ -13,8 +13,13 @@ jobs:
       run: |
          for (( i=0; i <=5; i++))
          do
-             ls -lha /blabhlh
-             if [ $? -eq 0 ]; then
+             m=$(ls -lha /blabhlh)
+             echo "Status is ${m}"
+             if [ $i -eq 4 ]; then
+                 m = 0
+             fi
+             if [ $m -eq 0 ]; then
+                 echo "Success at i=${i}"
                  break
              fi
          done
