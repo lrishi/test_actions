@@ -13,10 +13,10 @@ jobs:
       run: |
          for (( i=0; i <=5; i++))
          do
-             m=$(ls -lha /blabhlh)
+             m=$((ls /blsk > /dev/null 2&>1 && echo 0) || echo 1)
              echo "Status is ${m}"
              if [ $i -eq 4 ]; then
-                 m = 0
+                 m=0
              fi
              if [ $m -eq 0 ]; then
                  echo "Success at i=${i}"
