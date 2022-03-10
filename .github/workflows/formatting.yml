@@ -5,15 +5,12 @@ jobs:
     name: Code Formatting
     runs-on: ubuntu-latest
     steps:
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
-      with:
-        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v0'
-    - name: 'Use gcloud CLI'
-      run: 'gcloud info'
-    - name: Copy clang-format
-      run: gsutil cp gs://endpoint-dev-artifacts/endpoint-dev-large-files/Tools/ClangFormat/clang-format-linux ./clang-format-linux
     - name: LS
       run: ls -lha .
+    - name: TOUCH
+      run: touch some_filename
+    - name: Commit and push changes
+      uses: devops-infra/action-commit-push@v0.8
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Replaced foo with bar
