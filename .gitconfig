@@ -1,0 +1,12 @@
+[lfs]
+url = localhost:327381
+concurrenttransfers = 8
+standalonetransferagent = epgcs
+locksverify = false
+
+[lfs "push"]
+url = localhost:327381
+
+[lfs "customtransfer.epgcs"]
+path = ./Tools/Scripts/GitLfsEPGCSAgent.py
+concurrent = true
